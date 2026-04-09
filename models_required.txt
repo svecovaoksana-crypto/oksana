@@ -1,0 +1,98 @@
+================================================================
+НЕОБХОДИМЫЕ МОДЕЛИ — Flora AI стиль + Wan 2.1 в ComfyUI
+================================================================
+
+Все модели можно скачать автоматически: ./download_models.sh
+Или вручную по ссылкам ниже.
+
+----------------------------------------------------------------
+ДЛЯ WORKFLOW 01 — Генерация фото по референсу
+(папка ComfyUI/models/)
+----------------------------------------------------------------
+
+1. checkpoints/juggernautXL_v9Rdphoto2Lightning.safetensors
+   Источник: https://huggingface.co/RunDiffusion/Juggernaut-XL-v9
+   Размер: ~6.5 GB
+   Описание: SDXL модель с фотореализмом (лучшая для портретов)
+
+   Альтернативы:
+   - realvisxlV50_v50Bakedvae.safetensors (RealVisXL)
+   - dreamshaperXL_v21TurboDPMSDE.safetensors
+
+2. ipadapter/ip-adapter-plus_sdxl_vit-h.safetensors
+   Источник: https://huggingface.co/h94/IP-Adapter
+   Путь в репо: sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors
+   Размер: ~800 MB
+   Описание: IP-Adapter для SDXL — переносит стиль/облик с референса
+
+   Альтернативы (для лиц):
+   - ip-adapter-faceid-plusv2_sdxl.bin  (лучше сохраняет лицо)
+   - ip-adapter_sdxl_vit-h.safetensors  (базовая версия)
+
+3. clip_vision/CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors
+   Источник: https://huggingface.co/h94/IP-Adapter
+   Путь в репо: models/image_encoder/model.safetensors
+   Размер: ~600 MB
+   Описание: CLIP энкодер для IP-Adapter
+
+----------------------------------------------------------------
+ДЛЯ WORKFLOW 02 — Генерация видео (Wan 2.1)
+(папка ComfyUI/models/wanvideo/ и clip/ и vae/)
+----------------------------------------------------------------
+
+4. wanvideo/wan2.1_i2v_480p_14B_bf16.safetensors
+   Источник: https://huggingface.co/kijai/WanVideo-safetensors
+   Размер: ~29 GB (нужна хорошая видеокарта: RTX 3090/4090 или лучше)
+   Описание: Wan 2.1 I2V 14B — лучшее качество, 480p
+
+   Если видеопамяти мало (< 16GB VRAM):
+   - wan2.1_i2v_480p_1.3B_bf16.safetensors (1.3B, ~3 GB, быстрая)
+
+5. vae/wan_2.1_vae.safetensors
+   Источник: https://huggingface.co/kijai/WanVideo-safetensors
+   Размер: ~400 MB
+
+6. clip/umt5-xxl-enc-bf16.safetensors
+   Источник: https://huggingface.co/kijai/WanVideo-safetensors
+   Размер: ~10 GB
+   Описание: Text encoder T5-XXL для Wan 2.1
+
+7. clip_vision/clip_vision_h.safetensors
+   Источник: https://huggingface.co/kijai/WanVideo-safetensors
+   Размер: ~600 MB
+   Описание: CLIP Vision для I2V кондиционирования
+
+----------------------------------------------------------------
+ТРЕБОВАНИЯ К ЖЕЛЕЗУ
+----------------------------------------------------------------
+
+Минимум:
+  GPU: RTX 3080 (10GB) + модель 1.3B
+  RAM: 32 GB
+  VRAM: 10 GB (с offload на CPU)
+
+Рекомендую:
+  GPU: RTX 3090/4090 (24GB) + модель 14B
+  RAM: 64 GB
+  VRAM: 24 GB
+
+Для 720p видео нужна RTX 4090 или A100.
+
+----------------------------------------------------------------
+НЕОБХОДИМЫЕ КАСТОМНЫЕ НОДЫ
+----------------------------------------------------------------
+
+Установить автоматически: ./install_custom_nodes.sh
+
+1. ComfyUI-WanVideoWrapper (kijai)
+   https://github.com/kijai/ComfyUI-WanVideoWrapper
+
+2. ComfyUI_IPAdapter_plus (cubiq)
+   https://github.com/cubiq/ComfyUI_IPAdapter_plus
+
+3. ComfyUI-VideoHelperSuite (Kosinkadink)
+   https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
+
+4. ComfyUI-Manager (ltdrdata)
+   https://github.com/ltdrdata/ComfyUI-Manager
+================================================================
