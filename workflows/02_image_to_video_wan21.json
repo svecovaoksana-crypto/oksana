@@ -16,8 +16,8 @@
       ],
       "properties": {"Node name for S&R": "WanVideoModelLoader"},
       "widgets_values": [
-        "wan2.1_i2v_480p_14B_bf16.safetensors",
-        "bf16",
+        "wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors",
+        "fp8_e4m3fn",
         "sdpa",
         true
       ]
@@ -50,7 +50,7 @@
         {"name": "CLIP", "type": "CLIP", "links": [3], "slot_index": 0}
       ],
       "properties": {"Node name for S&R": "CLIPLoader"},
-      "widgets_values": ["umt5-xxl-enc-bf16.safetensors", "wan", "default"]
+      "widgets_values": ["umt5_xxl_fp8_e4m3fn_scaled.safetensors", "wan", "default"]
     },
     {
       "id": 4,
@@ -81,7 +81,7 @@
         {"name": "CLIP_VISION", "type": "CLIP_VISION", "links": [5], "slot_index": 0}
       ],
       "properties": {"Node name for S&R": "CLIPVisionLoader"},
-      "widgets_values": ["clip_vision_h.safetensors"]
+      "widgets_values": ["CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"]
     },
     {
       "id": 6,
@@ -244,7 +244,7 @@
       "inputs": [],
       "outputs": [],
       "properties": {},
-      "widgets_values": ["ВАЖНО: Сначала запусти workflow 01 для генерации фото по референсу.\nПотом возьми сохранённое фото и загрузи его в узел LoadImage (#4).\n\nМодели нужны в папке ComfyUI/models/:\n- checkpoints: wan2.1_i2v_480p_14B_bf16.safetensors\n- vae: wan_2.1_vae.safetensors\n- clip: umt5-xxl-enc-bf16.safetensors\n- clip_vision: clip_vision_h.safetensors"]
+      "widgets_values": ["ВАЖНО: Сначала запусти workflow 01 для генерации фото по референсу.\nПотом возьми сохранённое фото и загрузи его в узел LoadImage (#4).\n\nМодели в C:\\AI\\ComfyUI\\models\\:\n- diffusion_models: wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors  ← СКАЧАТЬ!\n- vae: wan_2.1_vae.safetensors  ✅\n- text_encoders: umt5_xxl_fp8_e4m3fn_scaled.safetensors  ✅\n- clip_vision: CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors  ✅"]
     },
     {
       "id": 14,

@@ -17,7 +17,7 @@
         {"name": "VAE", "type": "VAE", "links": [13], "slot_index": 2}
       ],
       "properties": {"Node name for S&R": "CheckpointLoaderSimple"},
-      "widgets_values": ["juggernautXL_v9Rdphoto2Lightning.safetensors"]
+      "widgets_values": ["xlSatIORImitationOf_xlSATIorv8.safetensors"]
     },
     {
       "id": 2,
